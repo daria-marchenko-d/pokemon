@@ -2,10 +2,10 @@ import pygame
 import sys
 from pygame.math import Vector2 as vector
 
-WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
-TITLE_SIZE = 64
-ANIMATION_SPEED = 6
-BATTLE_OUTLINE_WIDTH = 4
+# WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
+# TITLE_SIZE = 64
+# ANIMATION_SPEED = 6
+# BATTLE_OUTLINE_WIDTH = 4
 
 # WHITE = (255,255,255)
 # BLACK = (0,0,0)
@@ -71,3 +71,23 @@ BATTLE_CHOICES = {
 		'defend': {'pos' : vector(40, 0), 'icon': 'shield'},
 		'switch': {'pos' : vector(30, 40), 'icon': 'arrows'}}
 }
+
+class Window:
+    def __init__(self):
+            self.screen = pygame.display.set_mode((1280, 720))
+            self.rect = self.screen.get_rect()
+            self.FPS = 30
+            self.clock = pygame.time.Clock()
+            self.font = pygame.font.SysFont("Arial", 25)
+            self.menu_open = True
+            self.colors = {"red": (255, 0, 0),
+						"green": (0, 255, 0),
+						"blue": (0, 0, 255),
+						"white": (255, 255, 255),
+						"black": (0, 0, 0),
+						"brown": (153, 76, 0),
+						"grey": (100, 100, 100)}
+    def setup(self):
+        self.screen.fill(self.colors["black"])
+        pygame.display.set_caption("Menu Test!")
+                

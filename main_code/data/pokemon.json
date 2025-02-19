@@ -1,0 +1,806 @@
+
+{
+    "en": {
+        "title": "Pokemon Buttle",
+        "pokemon":{
+            "available": { 
+                "bulbasaur": {
+                "name": "Bulbasaur",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "grass",
+                "attack": 49,
+                "defense": 49
+                },
+                "charmander": {
+                "name": "Charmander",
+                "level": 5,
+                "hit_points": 39,
+                "type_": "fire",
+                "attack": 52,
+                "defense": 43
+                },
+                "squirtle": {
+                "name": "Squirtle",
+                "level": 5,
+                "hit_points": 44,
+                "type_": "water",
+                "attack": 48,
+                "defense": 65
+                },
+                "pikachu": {
+                "name": "Pikachu",
+                "level": 20,
+                "hit_points": 35,
+                "type_": "electric",
+                "attack": 55,
+                "defense": 40
+                },
+                "sandshrew": {
+                "name": "Sandshrew",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "ground",
+                "attack": 75,
+                "defense": 85
+                },
+                "geodude": {
+                "name": "Geodude",
+                "level": 5,
+                "hit_points": 40,
+                "type_": "rock",
+                "attack": 80,
+                "defense": 100
+                },
+                "rowlet": {
+                "name": "Rowlet",
+                "level": 5,
+                "hit_points": 68,
+                "type_": "flying",
+                "attack": 55,
+                "defense": 55
+                },
+                "tyrunt": {
+                "name": "Tyrunt",
+                "level": 5,
+                "hit_points": 58,
+                "type_": "dragon",
+                "attack": 89,
+                "defense": 77
+                },
+                "spheal": {
+                "name": "Spheal",
+                "level": 5,
+                "hit_points": 70,
+                "type_": "ice",
+                "attack": 40,
+                "defense": 50
+                },
+                "venipede": {
+                "name": "Venipede",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "bug",
+                "attack": 45,
+                "defense": 59
+                },
+                "togepi": {
+                "name": "Togepi",
+                "level": 5,
+                "hit_points": 35,
+                "type_": "fairy",
+                "attack": 20,
+                "defense": 65
+                },
+                "machop": {
+                "name": "Machop",
+                "level": 5,
+                "hit_points": 70,
+                "type_": "fighting",
+                "attack": 80,
+                "defense": 50
+                },
+                "croagunk": {
+                "name": "Croagunk",
+                "level": 5,
+                "hit_points": 48,
+                "type_": "poison",
+                "attack": 61,
+                "defense": 40
+                },
+                "gastly": {
+                "name": "Gastly",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "ghost",
+                "attack": 35,
+                "defense": 30
+                },
+                "ralts": {
+                "name": "Ralts",
+                "level": 5,
+                "hit_points": 28,
+                "type_": "psychic",
+                "attack": 25,
+                "defense": 25
+                },
+                "pawniard": {
+                "name": "Pawniard",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "dark",
+                "attack": 85,
+                "defense": 70
+                },
+                "magnemite": {
+                "name": "Magnemite",
+                "level": 5,
+                "hit_points": 25,
+                "type_": "steel",
+                "attack": 35,
+                "defense": 70
+                },
+                "eevee": {
+                "name": "Eevee",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "normal",
+                "attack": 55,
+                "defense": 50
+                }
+            },
+
+            "unavailable": {
+                "chikorita": {
+                "name": "Chikorita",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "grass",
+                "attack": 49,
+                "defense": 65
+                },
+                "cyndaquil": {
+                "name": "Cyndaquil",
+                "level": 5,
+                "hit_points": 39,
+                "type_": "fire",
+                "attack": 52,
+                "defense": 43
+                },
+                "totodile": {
+                "name": "Totodile",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "water",
+                "attack": 65,
+                "defense": 64
+                },
+                "mareep": {
+                "name": "Mareep",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "electric",
+                "attack": 40,
+                "defense": 40
+                },
+                "roggenrola": {
+                "name": "Roggenrola",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "rock",
+                "attack": 75,
+                "defense": 85
+                },
+                "makuhita": {
+                "name": "Makuhita",
+                "level": 5,
+                "hit_points": 72,
+                "type_": "fighting",
+                "attack": 60,
+                "defense": 30
+                },
+                "carvanha": {
+                "name": "Carvanha",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "dark",
+                "attack": 90,
+                "defense": 20
+                },
+                "popplio": {
+                "name": "Popplio",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "water",
+                "attack": 54,
+                "defense": 54
+                },
+                "skorupi": {
+                "name": "Skorupi",
+                "level": 5,
+                "hit_points": 40,
+                "type_": "bug",
+                "attack": 50,
+                "defense": 90
+                },
+                "aron": {
+                "name": "Aron",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "steel",
+                "attack": 70,
+                "defense": 100
+                },
+                "swirlix": {
+                "name": "Swirlix",
+                "level": 5,
+                "hit_points": 62,
+                "type_": "fairy",
+                "attack": 48,
+                "defense": 66
+                },
+                "fennekin": {
+                "name": "Fennekin",
+                "level": 5,
+                "hit_points": 40,
+                "type_": "fire",
+                "attack": 45,
+                "defense": 40
+                },
+                "phantump": {
+                "name": "Phantump",
+                "level": 5,
+                "hit_points": 43,
+                "type_": "ghost",
+                "attack": 70,
+                "defense": 48
+                },
+                "elgyem": {
+                "name": "Elgyem",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "psychic",
+                "attack": 55,
+                "defense": 55
+                }
+            }
+        }
+
+        
+        
+    },
+
+    "fr": {
+        "title": "Bataille de Pokémon",
+        "pokemon":{
+            "available": { 
+                "bulbasaur": {
+                "name": "Bulbasaur",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "herbe",
+                "attack": 49,
+                "defense": 49
+                },
+                "charmander": {
+                "name": "Charmander",
+                "level": 5,
+                "hit_points": 39,
+                "type_": "feu",
+                "attack": 52,
+                "defense": 43
+                },
+                "squirtle": {
+                "name": "Squirtle",
+                "level": 5,
+                "hit_points": 44,
+                "type_": "eau",
+                "attack": 48,
+                "defense": 65
+                },
+                "pikachu": {
+                "name": "Pikachu",
+                "level": 20,
+                "hit_points": 35,
+                "type_": "électrique",
+                "attack": 55,
+                "defense": 40
+                },
+                "sandshrew": {
+                "name": "Sandshrew",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "sol",
+                "attack": 75,
+                "defense": 85
+                },
+                "geodude": {
+                "name": "Geodude",
+                "level": 5,
+                "hit_points": 40,
+                "type_": "rocher",
+                "attack": 80,
+                "defense": 100
+                },
+                "rowlet": {
+                "name": "Rowlet",
+                "level": 5,
+                "hit_points": 68,
+                "type_": "vol",
+                "attack": 55,
+                "defense": 55
+                },
+                "tyrunt": {
+                "name": "Tyrunt",
+                "level": 5,
+                "hit_points": 58,
+                "type_": "dragon",
+                "attack": 89,
+                "defense": 77
+                },
+                "spheal": {
+                "name": "Spheal",
+                "level": 5,
+                "hit_points": 70,
+                "type_": "glace",
+                "attack": 40,
+                "defense": 50
+                },
+                "venipede": {
+                "name": "Venipede",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "bogue",
+                "attack": 45,
+                "defense": 59
+                },
+                "togepi": {
+                "name": "Togepi",
+                "level": 5,
+                "hit_points": 35,
+                "type_": "fée",
+                "attack": 20,
+                "defense": 65
+                },
+                "machop": {
+                "name": "Machop",
+                "level": 5,
+                "hit_points": 70,
+                "type_": "lutte",
+                "attack": 80,
+                "defense": 50
+                },
+                "croagunk": {
+                "name": "Croagunk",
+                "level": 5,
+                "hit_points": 48,
+                "type_": "poison",
+                "attack": 61,
+                "defense": 40
+                },
+                "gastly": {
+                "name": "Gastly",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "fantôme",
+                "attack": 35,
+                "defense": 30
+                },
+                "ralts": {
+                "name": "Ralts",
+                "level": 5,
+                "hit_points": 28,
+                "type_": "psychique",
+                "attack": 25,
+                "defense": 25
+                },
+                "pawniard": {
+                "name": "Pawniard",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "sombre",
+                "attack": 85,
+                "defense": 70
+                },
+                "magnemite": {
+                "name": "Magnemite",
+                "level": 5,
+                "hit_points": 25,
+                "type_": "acier",
+                "attack": 35,
+                "defense": 70
+                },
+                "eevee": {
+                "name": "Eevee",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "normale",
+                "attack": 55,
+                "defense": 50
+                }
+            },
+
+            "unavailable": {
+                "chikorita": {
+                "name": "Chikorita",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "herbe",
+                "attack": 49,
+                "defense": 65
+                },
+                "cyndaquil": {
+                "name": "Cyndaquil",
+                "level": 5,
+                "hit_points": 39,
+                "type_": "feu",
+                "attack": 52,
+                "defense": 43
+                },
+                "totodile": {
+                "name": "Totodile",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "eau",
+                "attack": 65,
+                "defense": 64
+                },
+                "mareep": {
+                "name": "Mareep",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "électrique",
+                "attack": 40,
+                "defense": 40
+                },
+                "roggenrola": {
+                "name": "Roggenrola",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "rocher",
+                "attack": 75,
+                "defense": 85
+                },
+                "makuhita": {
+                "name": "Makuhita",
+                "level": 5,
+                "hit_points": 72,
+                "type_": "lutte",
+                "attack": 60,
+                "defense": 30
+                },
+                "carvanha": {
+                "name": "Carvanha",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "sombre",
+                "attack": 90,
+                "defense": 20
+                },
+                "popplio": {
+                "name": "Popplio",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "eau",
+                "attack": 54,
+                "defense": 54
+                },
+                "skorupi": {
+                "name": "Skorupi",
+                "level": 5,
+                "hit_points": 40,
+                "type_": "bogue",
+                "attack": 50,
+                "defense": 90
+                },
+                "aron": {
+                "name": "Aron",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "acier",
+                "attack": 70,
+                "defense": 100
+                },
+                "swirlix": {
+                "name": "Swirlix",
+                "level": 5,
+                "hit_points": 62,
+                "type_": "fée",
+                "attack": 48,
+                "defense": 66
+                },
+                "litten": {
+                "name": "Litten",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "feu",
+                "attack": 65,
+                "defense": 40
+                },
+                "gastly2": {
+                "name": "Gastly",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "fantôme",
+                "attack": 35,
+                "defense": 30
+                },
+                "ralts2": {
+                "name": "Ralts",
+                "level": 5,
+                "hit_points": 28,
+                "type_": "psychique",
+                "attack": 25,
+                "defense": 25
+                }
+            }
+        }
+    },
+
+    "uk": {
+        "title": "Битва покемонів",
+        "pokemon": {
+            "available": { 
+                "bulbasaur": {
+                "name": "Бульбазавр",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "трава",
+                "attack": 49,
+                "defense": 49
+                },
+                "charmander": {
+                "name": "Чармандер",
+                "level": 5,
+                "hit_points": 39,
+                "type_": "вогонь",
+                "attack": 52,
+                "defense": 43
+                },
+                "squirtle": {
+                "name": "Сквіртл",
+                "level": 5,
+                "hit_points": 44,
+                "type_": "вода",
+                "attack": 48,
+                "defense": 65
+                },
+                "pikachu": {
+                "name": "Пікачу",
+                "level": 20,
+                "hit_points": 35,
+                "type_": "електрика",
+                "attack": 55,
+                "defense": 40
+                },
+                "sandshrew": {
+                "name": "Sandshrew",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "земля",
+                "attack": 75,
+                "defense": 85
+                },
+                "geodude": {
+                "name": "Geodude",
+                "level": 5,
+                "hit_points": 40,
+                "type_": "камінь",
+                "attack": 80,
+                "defense": 100
+                },
+                "rowlet": {
+                "name": "Rowlet",
+                "level": 5,
+                "hit_points": 68,
+                "type_": "політ",
+                "attack": 55,
+                "defense": 55
+                },
+                "tyrunt": {
+                "name": "Tyrunt",
+                "level": 5,
+                "hit_points": 58,
+                "type_": "дракон",
+                "attack": 89,
+                "defense": 77
+                },
+                "spheal": {
+                "name": "Spheal",
+                "level": 5,
+                "hit_points": 70,
+                "type_": "лід",
+                "attack": 40,
+                "defense": 50
+                },
+                "venipede": {
+                "name": "Venipede",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "комаха",
+                "attack": 45,
+                "defense": 59
+                },
+                "togepi": {
+                "name": "Togepi",
+                "level": 5,
+                "hit_points": 35,
+                "type_": "фея",
+                "attack": 20,
+                "defense": 65
+                },
+                "machop": {
+                "name": "Machop",
+                "level": 5,
+                "hit_points": 70,
+                "type_": "битва",
+                "attack": 80,
+                "defense": 50
+                },
+                "croagunk": {
+                "name": "Croagunk",
+                "level": 5,
+                "hit_points": 48,
+                "type_": "отрута",
+                "attack": 61,
+                "defense": 40
+                },
+                "gastly": {
+                "name": "Gastly",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "привид",
+                "attack": 35,
+                "defense": 30
+                },
+                "ralts": {
+                "name": "Ralts",
+                "level": 5,
+                "hit_points": 28,
+                "type_": "психічний",
+                "attack": 25,
+                "defense": 25
+                },
+                "pawniard": {
+                "name": "Pawniard",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "темрява",
+                "attack": 85,
+                "defense": 70
+                },
+                "magnemite": {
+                "name": "Magnemite",
+                "level": 5,
+                "hit_points": 25,
+                "type_": "сталь",
+                "attack": 35,
+                "defense": 70
+                },
+                "eevee": {
+                "name": "Eevee",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "нормальний",
+                "attack": 55,
+                "defense": 50
+                }
+            },
+
+            "unavailable": {
+                "chikorita": {
+                "name": "Chikorita",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "трава",
+                "attack": 49,
+                "defense": 65
+                },
+                "cyndaquil": {
+                "name": "Cyndaquil",
+                "level": 5,
+                "hit_points": 39,
+                "type_": "вогонь",
+                "attack": 52,
+                "defense": 43
+                },
+                "totodile": {
+                "name": "Totodile",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "вода",
+                "attack": 65,
+                "defense": 64
+                },
+                "mareep": {
+                "name": "Mareep",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "електрика",
+                "attack": 40,
+                "defense": 40
+                },
+                "roggenrola": {
+                "name": "Roggenrola",
+                "level": 5,
+                "hit_points": 55,
+                "type_": "камінь",
+                "attack": 75,
+                "defense": 85
+                },
+                "makuhita": {
+                "name": "Makuhita",
+                "level": 5,
+                "hit_points": 72,
+                "type_": "битва",
+                "attack": 60,
+                "defense": 30
+                },
+                "carvanha": {
+                "name": "Carvanha",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "темрява",
+                "attack": 90,
+                "defense": 20
+                },
+                "popplio": {
+                "name": "Popplio",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "вода",
+                "attack": 54,
+                "defense": 54
+                },
+                "skorupi": {
+                "name": "Skorupi",
+                "level": 5,
+                "hit_points": 40,
+                "type_": "комаха",
+                "attack": 50,
+                "defense": 90
+                },
+                "aron": {
+                "name": "Aron",
+                "level": 5,
+                "hit_points": 50,
+                "type_": "сталь",
+                "attack": 70,
+                "defense": 100
+                },
+                "swirlix": {
+                "name": "Swirlix",
+                "level": 5,
+                "hit_points": 62,
+                "type_": "фея",
+                "attack": 48,
+                "defense": 66
+                },
+                "litten": {
+                "name": "Litten",
+                "level": 5,
+                "hit_points": 45,
+                "type_": "вогонь",
+                "attack": 65,
+                "defense": 40
+                },
+                "gastly2": {
+                "name": "Gastly",
+                "level": 5,
+                "hit_points": 30,
+                "type_": "привид",
+                "attack": 35,
+                "defense": 30
+                },
+                "ralts2": {
+                "name": "Ralts",
+                "level": 5,
+                "hit_points": 28,
+                "type_": "психічний",
+                "attack": 25,
+                "defense": 25
+                }
+            }
+        }
+    }
+}
