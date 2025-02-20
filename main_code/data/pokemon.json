@@ -509,29 +509,29 @@
                 "attack": 48,
                 "defense": 66
                 },
-                "litten": {
-                "name": "Litten",
+                "fennekin": {
+                "name": "Fennekin",
                 "level": 5,
-                "hit_points": 45,
-                "type_": "feu",
-                "attack": 65,
+                "hit_points": 40,
+                "type_": "fire",
+                "attack": 45,
                 "defense": 40
                 },
-                "gastly2": {
-                "name": "Gastly",
+                "phantump": {
+                "name": "Phantump",
                 "level": 5,
-                "hit_points": 30,
-                "type_": "fantôme",
-                "attack": 35,
-                "defense": 30
+                "hit_points": 43,
+                "type_": "ghost",
+                "attack": 70,
+                "defense": 48
                 },
-                "ralts2": {
-                "name": "Ralts",
+                "elgyem": {
+                "name": "Elgyem",
                 "level": 5,
-                "hit_points": 28,
-                "type_": "psychique",
-                "attack": 25,
-                "defense": 25
+                "hit_points": 55,
+                "type_": "psychic",
+                "attack": 55,
+                "defense": 55
                 }
             }
         }
@@ -776,29 +776,29 @@
                 "attack": 48,
                 "defense": 66
                 },
-                "litten": {
-                "name": "Litten",
+                "fennekin": {
+                "name": "Fennekin",
                 "level": 5,
-                "hit_points": 45,
-                "type_": "вогонь",
-                "attack": 65,
+                "hit_points": 40,
+                "type_": "fire",
+                "attack": 45,
                 "defense": 40
                 },
-                "gastly2": {
-                "name": "Gastly",
+                "phantump": {
+                "name": "Phantump",
                 "level": 5,
-                "hit_points": 30,
-                "type_": "привид",
-                "attack": 35,
-                "defense": 30
+                "hit_points": 43,
+                "type_": "ghost",
+                "attack": 70,
+                "defense": 48
                 },
-                "ralts2": {
-                "name": "Ralts",
+                "elgyem": {
+                "name": "Elgyem",
                 "level": 5,
-                "hit_points": 28,
-                "type_": "психічний",
-                "attack": 25,
-                "defense": 25
+                "hit_points": 55,
+                "type_": "psychic",
+                "attack": 55,
+                "defense": 55
                 }
             }
         }

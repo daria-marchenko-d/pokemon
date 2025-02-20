@@ -62,6 +62,7 @@ class Graphic:
         self.running = True
         while self.running:
             self.screen.blit(self.background, (0, 0))
+            
 
             self.draw_button(170, "Your name", self.GRAY, self.HIGHLIGHT, self.user_name)
             self.draw_button(230, "Start game", self.GRAY, self.HIGHLIGHT, self.menu_game)
@@ -155,7 +156,18 @@ class Graphic:
         pass
 
     def languages_menu(self):
-        pass
+        self.running = True
+        while self.running:
+            self.screen.blit(self.background, (0, 0))
+            
+
+            self.draw_button(200, "English", self.GRAY, self.HIGHLIGHT)
+            self.draw_button(290, "Français", self.GRAY, self.HIGHLIGHT)
+            self.draw_button(380, "Ukrainien", self.GRAY, self.HIGHLIGHT)
+            self.draw_button(470, "Go back", self.GRAY, self.HIGHLIGHT, self.show_main_menu)
+
+            pygame.display.flip()
+
 
     def quit_game(self):
         pygame.quit()
