@@ -97,7 +97,6 @@ class Graphic:
         if x < mouse[0] < x + width and button_y < mouse[1] < button_y + height:
             pygame.draw.rect(self.screen, hover_color, (x, button_y, width, height))
             if click[0] == 1 and action:
-                pygame.time.delay(150)
                 action()
         else:
             pygame.draw.rect(self.screen, default_color, (x, button_y, width, height))

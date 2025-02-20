@@ -10,7 +10,6 @@ class Menu:
       self.WIDTH, self.HEIGHT = game_screen.get_size()
       
     def show_main_menu(self):
-        print("Returning to main menu")
         self.running = True
 
         while self.running:
@@ -30,40 +29,34 @@ class Menu:
                     pygame.quit()
                     sys.exit()
 
+    
+    
     def menu_game(self):
-        print("menu_game called")  # Додали цей рядок для перевірки
-        # Clothe current window
-        # self.running = False
-        # Open new window with new menu
         self.running = True
+
         while self.running:
             self.graphic.draw_menu_background() 
 
             self.graphic.draw_button(240, "New part", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.new_part)
             self.graphic.draw_button(310, "Current part", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.current_part)
-            self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.return_to_main_menu)
+            self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.show_main_menu)
 
             pygame.display.flip()
-            # pygame.display.update()
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
                     pygame.quit()
                     sys.exit()
-        print("Exiting menu_game") 
 
     def new_part(self):
-        # Clothe current window
-        self.running = False
-        # Open new window with new menu
         self.running = True
         while self.running:
             self.graphic.draw_menu_background() 
 
             self.graphic.draw_button(170, "Your name", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.user_name)
             self.graphic.draw_button(240, "Start", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.start)
-            self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.return_to_main_menu)
+            self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT, self.show_main_menu)
 
             pygame.display.flip()
 
@@ -198,9 +191,6 @@ class Menu:
                     sys.exit()
 
     def rules_settings(self):
-        # Clothe current window
-        self.running = False
-        # Open new window with new menu
         self.running = True
         while self.running:
             self.graphic.draw_menu_background() 
@@ -265,11 +255,7 @@ class Menu:
                 if event.type == pygame.QUIT:
                     self.running = False
                     pygame.quit()
-                    sys.exit()
-
-    def return_to_main_menu(self):
-        print("Returning to main menu")  # Логування для перевірки
-        self.running = False 
+                    sys.exit() 
 
     def quit_game(self):
         pygame.quit()
@@ -279,8 +265,8 @@ if __name__ == "__main__":
     pygame.init()
     
     screen = pygame.display.set_mode((1280, 720))
-    game = None  # Якщо потрібно, заміни на клас гри
+    game = None
     graphic = Graphic(game)
 
-    menu = Menu(screen, game, graphic)  # Передаємо `graphic`
+    menu = Menu(screen, game, graphic)  
     menu.show_main_menu()
