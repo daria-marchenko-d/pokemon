@@ -1,247 +1,149 @@
-# import pygame
-# import json
-# import random
+import os
+import json
+import pygame
 
-# # Клас для представлення Покемона
-# class Pokemon:
-#     def __init__(self, name, ptype, hp, attack, defense):
-#         self.name = name
-#         self.ptype = ptype
-#         self.hp = hp
-#         self.attack = attack
-#         self.defense = defense
+class Pokedex:
+    pass
 
-#     def take_damage(self, damage):
-#         self.hp -= max(0, damage - self.defense)
-#         return self.hp > 0
+def generate_pokemon_json(image_directory, output_json_file):
+    # List all PNG files in the directory
+    files = os.listdir(image_directory)
+    png_files = [file for file in files if file.endswith('.png')]
+    
+    # Create a dictionary for Pokémon data
+    pokemon_data = {
+        "en": {
+            "title": "Pokemon Battle",
+            "pokemon": {
+                "available": {},
+                "unavailable": {}
+            }
+        }
+    }
+    
+    # Populate the available and unavailable sections
+    for i, file in enumerate(png_files):
+        pokemon_key = os.path.splitext(file)[0]
+        pokemon_entry = {
+            "name": pokemon_key.capitalize(),
+            "level": 5,
+            "hit_points": 50,
+            "type_": "unknown",
+            "attack": 50,
+            "defense": 50
+        }
+        
+        if i % 2 == 0:
+            pokemon_data["en"]["pokemon"]["available"][pokemon_key] = pokemon_entry
+        else:
+            pokemon_data["en"]["pokemon"]["unavailable"][pokemon_key] = pokemon_entry
+    
+    # Write the JSON data to the output file
+    with open(output_json_file, "w") as f:
+        json.dump(pokemon_data, f, indent=4)
 
-# # Клас для типів покемонів та ефективності атак
-# class Type:
-#     effectiveness = {
-#         "Feu": {"Eau": 0.5, "Plante": 2.0, "Feu": 1.0},
-#         "Eau": {"Feu": 2.0, "Plante": 0.5, "Eau": 1.0},
-#         "Plante": {"Eau": 2.0, "Feu": 0.5, "Plante": 1.0}
-#     }
+def draw_rounded_rect(surface, color, rect, corner_radius):
+    """ Draw a rectangle with rounded corners.
+    We use anti-aliased circles to make the corners smooth.
+    """
+    if corner_radius > min(rect[2], rect[3]) // 2:
+        corner_radius = min(rect[2], rect[3]) // 2
 
-#     @staticmethod
-#     def get_effectiveness(attacker_type, defender_type):
-#         return Type.effectiveness.get(attacker_type, {}).get(defender_type, 1.0)
+    pygame.draw.rect(surface, color, rect, border_radius=corner_radius)
 
-# # Клас для бою між покемонами
-# class Combat:
-#     def __init__(self, pokemon1, pokemon2):
-#         self.pokemon1 = pokemon1
-#         self.pokemon2 = pokemon2
-
-#     def attack(self, attacker, defender):
-#         effectiveness = Type.get_effectiveness(attacker.ptype, defender.ptype)
-#         damage = attacker.attack * effectiveness
-#         alive = defender.take_damage(damage)
-#         return alive
-
-#     def start_battle(self):
-#         while self.pokemon1.hp > 0 and self.pokemon2.hp > 0:
-#             if not self.attack(self.pokemon1, self.pokemon2):
-#                 return f"{self.pokemon1.name} wins!"
-#             if not self.attack(self.pokemon2, self.pokemon1):
-#                 return f"{self.pokemon2.name} wins!"
-
-# # Клас для збереження покемонів у Pokédex
-# class PokeIndex:
-#     def __init__(self):
-#         self.filename = "pokedex.json"
-#         self.pokedex = self.load_pokedex()
-
-#     def load_pokedex(self):
-#         try:
-#             with open(self.filename, "r") as file:
-#                 return json.load(file)
-#         except FileNotFoundError:
-#             return {}
-
-#     def save_pokemon(self, pokemon):
-#         if pokemon.name not in self.pokedex:
-#             self.pokedex[pokemon.name] = {
-#                 "type": pokemon.ptype,
-#                 "hp": pokemon.hp,
-#                 "attack": pokemon.attack,
-#                 "defense": pokemon.defense
-#             }
-#             with open(self.filename, "w") as file:
-#                 json.dump(self.pokedex, file, indent=4)
-
-# # Клас для дресирувальника
-# class Dresseur:
-#     def __init__(self, name):
-#         self.name = name
-#         self.pokemons = []
-
-#     def add_pokemon(self, pokemon):
-#         if len(self.pokemons) < 6:
-#             self.pokemons.append(pokemon)
-
-# # Головний клас гри
-# class Game:
-#     def __init__(self):
-#         pygame.init()
-#         self.screen = pygame.display.set_mode((800, 600))
-#         pygame.display.set_caption("Pokemon Battle")
-#         self.running = True
-#         self.pokedex = PokeIndex()
-#         self.dresseur = Dresseur("Player")
-#         self.load_pokemon_data()
-#         self.menu()
-
-#     def load_pokemon_data(self):
-#         try:
-#             with open("pokemon.json", "r") as file:
-#                 self.pokemon_data = json.load(file)
-#         except FileNotFoundError:
-#             self.pokemon_data = []
-
-#     def menu(self):
-#         while True:
-#             print("1. Lancer une partie")
-#             print("2. Ajouter un Pokémon")
-#             print("3. Accéder au Pokédex")
-#             print("4. Quitter")
-#             choix = input("Choisissez une option: ")
-            
-#             if choix == "1":
-#                 self.start_game()
-#             elif choix == "2":
-#                 self.add_pokemon()
-#             elif choix == "3":
-#                 self.view_pokedex()
-#             elif choix == "4":
-#                 break
-#             else:
-#                 print("Option invalide.")
-
-#     def start_game(self):
-#         print("Démarrage du jeu...")
-#         self.game_loop()
-
-#     def add_pokemon(self):
-#         name = input("Nom du Pokémon: ")
-#         ptype = input("Type du Pokémon: ")
-#         hp = int(input("HP: "))
-#         attack = int(input("Attaque: "))
-#         defense = int(input("Défense: "))
-#         new_pokemon = Pokemon(name, ptype, hp, attack, defense)
-#         self.pokedex.save_pokemon(new_pokemon)
-#         print(f"{name} a été ajouté au Pokédex!")
-
-#     def view_pokedex(self):
-#         print("Pokédex:")
-#         for name, data in self.pokedex.pokedex.items():
-#             print(f"{name}: {data}")
-
-#     def game_loop(self):
-#         while self.running:
-#             for event in pygame.event.get():
-#                 if event.type == pygame.QUIT:
-#                     self.running = False
-#             self.screen.fill((0, 0, 0))  # Чорний фон
-#             pygame.display.flip()
-#         pygame.quit()
-
-# if __name__ == "__main__":
-#     game = Game()
-
-import sys
-import pygame as pg
-
-
-pg.init()
-
-class Window:
-
-    def __init__(self):
-        self.screen = pg.display.set_mode((800, 600))
-        self.rect = self.screen.get_rect()
-        self.FPS = 30
-        self.clock = pg.time.Clock()
-        self.font = pg.font.SysFont("Arial", 25)
-        self.menu_open = True
-        self.colors = {"red": (255, 0, 0),
-                       "green": (0, 255, 0),
-                       "blue": (0, 0, 255),
-                       "white": (255, 255, 255),
-                       "black": (0, 0, 0),
-                       "brown": (153, 76, 0),
-                       "grey": (100, 100, 100)}
-
-    def setup(self):
-        self.screen.fill(self.colors["black"])
-        pg.display.set_caption("Menu Test!")
-
-    def text(self, message, text_color, x_pos, y_pos):
-        text = self.font.render(message, True, (self.colors[text_color]))
-        text_rect = text.get_rect(center=(x_pos, y_pos))
-        self.screen.blit(text, text_rect)
-
-    def exit(self):
-        self.screen.fill(self.colors["black"])
-        text = self.font.render("Thank you for playing. Goodbye!", True,
-                                (self.colors["white"]))
-        text_rect = text.get_rect(center=(self.rect.w/2, self.rect.h/2))
-        self.screen.blit(text, text_rect)
-        pg.display.update()
-        pg.time.wait(1000)
-        pg.quit()
-        sys.exit()
-
-
-class Button(pg.sprite.Sprite):
-
-    def __init__(self, pos, text, window):
-        super().__init__()  # Call __init__ of the parent class.
-        # Render the text.
-        self.text_surf = window.font.render(text, True, window.colors["black"])
-        self.image = pg.Surface((self.text_surf.get_width()+40,
-                                 self.text_surf.get_height()+20))
-        self.image.fill(window.colors["white"])
-        # Now blit the text onto the self.image.
-        self.image.blit(self.text_surf, (20, 10))
-        self.rect = self.image.get_rect(topleft=pos)
-
-
-def main():
-    window = Window()
-    window.setup()
-    clock = pg.time.Clock()
-    # gui is a sprite group which will contain the button sprites.
-    gui = pg.sprite.Group()
-    # Instantiate some buttons.
-    quit_button = Button(
-        pos=(window.rect.w/2 - 100, window.rect.h/1.5 - 25),
-        text="QUIT",
-        window=window,
-        )
-    hello_button = Button(
-        pos=(window.rect.w/8, window.rect.h/2),
-        text="hello",
-        window=window,
-        )
-    # Add the buttons to the gui group.
-    gui.add(quit_button, hello_button)
-
-    while window.menu_open == True:
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                window.exit()
-            if event.type == pg.MOUSEBUTTONDOWN and event.button == 1:
-                # Handle button events.
-                if quit_button.rect.collidepoint(event.pos):
-                    window.exit()
-                elif hello_button.rect.collidepoint(event.pos):
-                    print("hello")
-
-        gui.update()  # Call update methods of contained sprites.
-        gui.draw(window.screen)  # Draw all sprites.
-        pg.display.flip()
+def display_images(image_directory, data_file, background_image_path):
+    pygame.init()
+    pygame.mixer.init()  # Initialize the mixer module
+    screen = pygame.display.set_mode((800, 600))  # Decrease window size
+    pygame.display.set_caption("Pokedex")
+    clock = pygame.time.Clock()
+    
+    # Load and resize background image
+    background_image = pygame.image.load(background_image_path)
+    background_image = pygame.transform.scale(background_image, (800, 600))
+    
+    # Load Pokémon data from JSON file
+    with open(data_file) as f:
+        pokemon_data = json.load(f)['en']['pokemon']
+    
+    pokemon_keys = list(pokemon_data['available'].keys()) + list(pokemon_data['unavailable'].keys())
+    current_index = 0
+    
+    # Load the Comic Sans MS font with a smaller size
+    font = pygame.font.SysFont("Comic Sans MS", 24)
+    
+    # Load and play background music
+    pygame.mixer.music.load("main_code/sounds/menu.mp3")  # Change this to your sound file path
+    pygame.mixer.music.play(-1)  # Play the music in a loop
+    
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    current_index = (current_index + 1) % len(pokemon_keys)
+                elif event.key == pygame.K_LEFT:
+                    current_index = (current_index - 1) % len(pokemon_keys)
+        
+        screen.fill((255, 255, 255))
+        
+        # Display background image
+        screen.blit(background_image, (0, 0))
+        
+        # Get the Pokémon key and data
+        pokemon_key = pokemon_keys[current_index]
+        if pokemon_key in pokemon_data['available']:
+            pokemon = pokemon_data['available'][pokemon_key]
+            availability_text = "Available"
+            availability_color = (0, 255, 0)  # Green
+        else:
+            pokemon = pokemon_data['unavailable'][pokemon_key]
+            availability_text = "Unavailable"
+            availability_color = (255, 0, 0)  # Red
+        
+        # Load and display the Pokémon image
+        image_path = os.path.join(image_directory, f"{pokemon_key}.png")
+        try:
+            pokemon_image = pygame.image.load(image_path)
+            # Resize the Pokémon image (maintain size at 325x325)
+            pokemon_image = pygame.transform.scale(pokemon_image, (325, 325))  # Maintain size
+            # Center the Pokémon image and shift it to the left and up
+            image_rect = pokemon_image.get_rect(center=(screen.get_width() // 2 - 100, screen.get_height() // 2 - 15))
+            screen.blit(pokemon_image, image_rect.topleft)
+        except pygame.error:
+            print(f"Image not found at {image_path}")
+        
+        # Display Pokémon information
+        info_text = f"Name: {pokemon['name']}\nLevel: {pokemon['level']}\nHP: {pokemon['hit_points']}\nType: {pokemon['type_']}\nAttack: {pokemon['attack']}\nDefense: {pokemon['defense']}"
+        y_offset = 120  # Move descriptions slightly down
+        for line in info_text.split('\n'):
+            text_surface = font.render(line, True, (0, 0, 0))
+            # Position the text further to the right
+            text_x = screen.get_width() - text_surface.get_width() - 100
+            screen.blit(text_surface, (text_x, y_offset))
+            y_offset += 40  # Adjust line spacing
+        
+        # Display availability text with rounded rectangle
+        availability_surface = font.render(availability_text, True, (0, 0, 0))
+        availability_rect = availability_surface.get_rect(topleft=(text_x, y_offset + 10))
+        draw_rounded_rect(screen, availability_color, availability_rect.inflate(20, 20), 10)
+        screen.blit(availability_surface, availability_rect)
+        
+        pygame.display.flip()
         clock.tick(30)
+    
+    pygame.quit()
+    print("Pygame quit")
 
 if __name__ == "__main__":
-    main()
+    image_directory = "main_code/pokemon_sprites"
+    output_json_file = "main_code/data/generated_pokemon.json"
+    background_image_path = "main_code/pokedex-background/pokedex.jpg"  # Change this to your background image path
+    
+    # Generate the JSON file
+    generate_pokemon_json(image_directory, output_json_file)
+    
+    # Display the images and information
+    display_images(image_directory, output_json_file, background_image_path)
