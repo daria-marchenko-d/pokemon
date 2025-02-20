@@ -1,0 +1,18 @@
+{
+    "joueur": {
+        "nom": "Carapuce",
+        "type": [
+            "Normal"
+        ],
+        "pv": 50,
+        "attaque": 10,
+        "defense": 5,
+        "attaques": [
+            "Charge"
+        ],
+        "sprites": {
+            "face": null,
+            "dos": null
+        }
+    }
+}

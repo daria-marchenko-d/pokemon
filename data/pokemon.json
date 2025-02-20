@@ -1,0 +1,66 @@
+[
+    {
+        "nom": "Mew",
+        "type": [
+            "Normal"
+        ],
+        "pv": 50,
+        "attaque": 10,
+        "defense": 5,
+        "attaques": [
+            "Charge"
+        ],
+        "sprites": {
+            "face": null,
+            "dos": null
+        }
+    },
+    {
+        "nom": "Dracaufeu",
+        "type": [
+            "Normal"
+        ],
+        "pv": 50,
+        "attaque": 10,
+        "defense": 5,
+        "attaques": [
+            "Charge"
+        ],
+        "sprites": {
+            "face": null,
+            "dos": null
+        }
+    },
+    {
+        "nom": "Pikachu",
+        "type": [
+            "Normal"
+        ],
+        "pv": 50,
+        "attaque": 10,
+        "defense": 5,
+        "attaques": [
+            "Charge"
+        ],
+        "sprites": {
+            "face": null,
+            "dos": null
+        }
+    },
+    {
+        "nom": "Carapuce",
+        "type": [
+            "Normal"
+        ],
+        "pv": 50,
+        "attaque": 10,
+        "defense": 5,
+        "attaques": [
+            "Charge"
+        ],
+        "sprites": {
+            "face": null,
+            "dos": null
+        }
+    }
+]
