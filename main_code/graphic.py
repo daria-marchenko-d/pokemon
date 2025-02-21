@@ -37,11 +37,11 @@ class Graphic:
         self.music = pygame.mixer.music.load("main_code/sounds/menu.mp3")
         pygame.mixer.music.play(-1)
 
-        # Стандартні шрифти
+        # Fonts
         self.default_font = pygame.font.SysFont("Harrington", 50)
         self.default_small_font = pygame.font.SysFont("Harrington", 30)
         
-        # Українські шрифти
+        # Ukrainian fonts
         self.ua_font = pygame.font.SysFont("Segoe UI", 50)
         self.ua_small_font = pygame.font.SysFont("Segoe UI", 30)
 
@@ -50,7 +50,7 @@ class Graphic:
         # Load languages
         self.languages = self.load_languages("main_code/data/pokemon.json")
         self.current_language = "english"
-        self.texts = {}  # Додаємо атрибут для текстів
+        self.texts = {}  # Add the texts for the current language
 
         self.pokemon_sprites = self.load_pokemon_sprites("main_code/pictures/pokemon_sprites")
 
@@ -97,9 +97,9 @@ class Graphic:
         return current_lang_texts.get(key, key)
     
     def set_texts(self, texts):
-        """Встановлює тексти для поточної мови"""
+        # Update the texts for the current language
         self.texts = texts
-        print(f"Тексти оновлено для мови {self.current_language}")
+        print(f"The text is update to {self.current_language}")
 
     def draw_menu_background(self):
 
@@ -122,15 +122,15 @@ class Graphic:
             print(f"Sprite for {pokemon_name} is not found!")
     
     def draw_button(self, y, key, default_color, hover_color):
-        # Вибір шрифту залежно від мови
+        # Chose the font
         font = self.ua_font if self.current_language == "ukrainian" else self.default_font
         
         try:
-            # Отримуємо переклад з JSON
-            if isinstance(key, str):  # Якщо key це ключ для перекладу
-                text = self.texts.get(key, key)  # Беремо переклад або використовуємо ключ як текст
+            # Translation from json file
+            if isinstance(key, str):  
+                text = self.texts.get(key, key)  # Take the text from the dictionary
             else:
-                text = str(key)  # Якщо key це вже текст
+                text = str(key) 
                 
             text_surface = font.render(text, True, self.BLACK)
             text_rect = text_surface.get_rect(center=(self.WIDTH // 2, y + 25))
@@ -145,8 +145,8 @@ class Graphic:
             if is_hovered:
                 pygame.draw.rect(self.screen, hover_color, button_rect)
                 if pygame.mouse.get_pressed()[0]:
-                    pygame.time.wait(150)  # Невелика затримка для уникнення випадкових натискань
-                    pygame.event.clear()   # Очищаємо події після кліка
+                    pygame.time.wait(150)  
+                    pygame.event.clear()  
                     return True
             else:
                 pygame.draw.rect(self.screen, default_color, button_rect)
@@ -156,13 +156,13 @@ class Graphic:
             print(f"Error drawing button: {e}")
         return False
 
-# Ініціалізація Pygame
+# Pygame initialization
 pygame.init()
 
-# Ініціалізація модуля font
+# Font initialization
 pygame.font.init()
 
-# Ініціалізація модуля mixer
+#  mixer initialization
 pygame.mixer.init()
 
 graphic = Graphic(screen=pygame.display.set_mode((1280, 720)))

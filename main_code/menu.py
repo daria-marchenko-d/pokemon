@@ -18,8 +18,8 @@ class Menu:
         self.languages = self.load_languages()
         self.current_language = "english"  # Current
         self.texts = self.languages[self.current_language]["menu"]
-        self.graphic.texts = self.texts  # Відразу передаємо тексти в графіку
-        self.graphic.current_language = self.current_language  # Передаємо мову в графіку
+        self.graphic.texts = self.texts  # Send the texts to the graphic
+        self.graphic.current_language = self.current_language  # Send the current language to the graphic
 
     def push_menu(self, new_state):
         self.menu_stack.append(self.menu_state)
@@ -29,7 +29,7 @@ class Menu:
         if len(self.menu_stack) > 1:
             self.menu_stack.pop()
             self.menu_state = self.menu_stack[-1]
-            print(f"Returning to {self.menu_state}")  # Для налагодження
+            print(f"Returning to {self.menu_state}") # Return to the previous state
         else:
             print("Cannot go back further!")
 
@@ -43,8 +43,8 @@ class Menu:
             self.current_language = lang_code
             self.texts = self.languages[lang_code]["menu"]
             self.graphic.current_language = lang_code
-            self.graphic.texts = self.texts  # Передаємо нові тексти в графіку
-            print(f"Мова змінена на {lang_code}, тексти оновлені")
+            self.graphic.texts = self.texts  
+            print(f"The language was changed {lang_code}")
 
     def show_main_menu(self):
         while True:
@@ -55,14 +55,14 @@ class Menu:
 
             self.graphic.draw_menu_background()
 
-            # Уніфікована обробка кнопки "назад" для всіх меню
+            # Unified button for all menus
             if self.menu_state != "main":
                 if self.graphic.draw_button(520, "go_back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
-                    self.menu_state = self.menu_stack.pop()  # Повертаємось до попереднього стану
-                    pygame.event.clear()  # Очищаємо події
-                    continue  # Продовжуємо цикл
+                    self.menu_state = self.menu_stack.pop()  # Return to the previous state
+                    pygame.event.clear()  # Clear the event queue
+                    continue  # Continue to the next iteration
 
-            # Головне меню
+            # Main menu buttons
             if self.menu_state == "main":
                 if self.graphic.draw_button(240, "start_game", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.push_menu("game")
@@ -152,7 +152,7 @@ class Menu:
         text = ''
         done = False
         
-        # Використовуємо правильні імена шрифтів
+        # Use the font based on the current language
         if self.current_language == "ukrainian":
             font_to_use = self.graphic.ua_font
             small_font_to_use = self.graphic.ua_small_font
@@ -218,7 +218,7 @@ class Menu:
     def pop_menu(self):
         if len(self.menu_stack) > 1:
             self.menu_stack.pop()
-            self.menu_state = self.menu_stack[-1] # Повертаємось до попереднього стану
+            self.menu_state = self.menu_stack[-1] # Return to the previous state
         elif len(self.menu_stack) == 1:
             self.menu_state = self.menu_stack[0]
         else:
