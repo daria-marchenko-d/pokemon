@@ -17,9 +17,7 @@ class Menu:
         # Languages
         self.languages = self.load_languages()
         self.current_language = "english"  # Current
-        self.texts = self.languages[self.current_language]["menu"]
-        self.graphic.texts = self.texts  # Відразу передаємо тексти в графіку
-        self.graphic.current_language = self.current_language  # Передаємо мову в графіку
+        self.texts = self.languages[self.current_language]
 
     def push_menu(self, new_state):
         self.menu_stack.append(self.menu_state)
@@ -39,12 +37,11 @@ class Menu:
             return json.load(file)
 
     def change_language(self, lang_code):
+        # Change the language
         if lang_code in self.languages:
             self.current_language = lang_code
-            self.texts = self.languages[lang_code]["menu"]
-            self.graphic.current_language = lang_code
-            self.graphic.texts = self.texts  # Передаємо нові тексти в графіку
-            print(f"Мова змінена на {lang_code}, тексти оновлені")
+            self.texts = self.graphic.set_language(lang_code)
+            # self.graphic.set_language(lang_code) 
 
     def show_main_menu(self):
         while True:
@@ -55,18 +52,11 @@ class Menu:
 
             self.graphic.draw_menu_background()
 
-            # Уніфікована обробка кнопки "назад" для всіх меню
-            if self.menu_state != "main":
-                if self.graphic.draw_button(520, "go_back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
-                    self.menu_state = self.menu_stack.pop()  # Повертаємось до попереднього стану
-                    pygame.event.clear()  # Очищаємо події
-                    continue  # Продовжуємо цикл
-
-            # Головне меню
+            # Main menu
             if self.menu_state == "main":
-                if self.graphic.draw_button(240, "start_game", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                if self.graphic.draw_button(240, "Start game", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.push_menu("game")
-                if self.graphic.draw_button(310, "add_pokemon", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                if self.graphic.draw_button(310, "Add pokemon", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.push_menu("pokemon")
                 if self.graphic.draw_button(380, "Pokedex", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.push_menu("pokedex")
@@ -81,6 +71,8 @@ class Menu:
                     self.push_menu("new_part")
                 if self.graphic.draw_button(300, "Current part", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.push_menu("current_part")
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()
 
             # New part menu
             elif self.menu_state == "new_part":
@@ -88,10 +80,13 @@ class Menu:
                     self.user_name()
                 if self.graphic.draw_button(240, "Start", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.menu_state = "start"
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()
 
             # Current part menu
             elif self.menu_state == "current_part":
-                pass
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()
 
             # Menu Add pokemon
             elif self.menu_state == "pokemon":
@@ -99,9 +94,8 @@ class Menu:
                     pass  # Add functionality to create a pokemon
                 if self.graphic.draw_button(300, "Import Pokemon", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     pass  # Add functionality to import a pokemon
-                if self.graphic.draw_button(520, "go_back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
-                    self.menu_state = "main"
-                    continue
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()  # Change the state to the main menu
 
             # Menu Pokedex
             elif self.menu_state == "pokedex":
@@ -110,9 +104,8 @@ class Menu:
                     pass  # add functionality to view all pokemon
                 if self.graphic.draw_button(300, "Search Pokemon", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     pass  # add functionality to search pokemon
-                if self.graphic.draw_button(520, "go_back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
-                    self.menu_state = "main"
-                    continue
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()  # Change the state to the main menu
 
             # Settings and rules menu
             elif self.menu_state == "rules_settings":
@@ -122,10 +115,13 @@ class Menu:
                     self.push_menu("languages")
                 if self.graphic.draw_button(310, "Help", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.push_menu("help")
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()
 
             # Rules menu
             elif self.menu_state == "rules":
-                pass
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()
 
             # Language menu
             elif self.menu_state == "languages":
@@ -135,10 +131,13 @@ class Menu:
                     self.change_language("english")
                 if self.graphic.draw_button(310, "Ukrainian", self.graphic.GRAY, self.graphic.HIGHLIGHT):
                     self.change_language("ukrainian")
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()
 
             # Help menu
             elif self.menu_state == "help":
-                pass
+                if self.graphic.draw_button(520, "Go back", self.graphic.GRAY, self.graphic.HIGHLIGHT):
+                    self.pop_menu()
 
             pygame.display.flip()
             pygame.time.Clock().tick(60)
@@ -151,16 +150,7 @@ class Menu:
         active = False
         text = ''
         done = False
-        
-        # Використовуємо правильні імена шрифтів
-        if self.current_language == "ukrainian":
-            font_to_use = self.graphic.ua_font
-            small_font_to_use = self.graphic.ua_small_font
-        else:
-            font_to_use = self.graphic.default_font
-            small_font_to_use = self.graphic.default_small_font
-
-        prompt_text = font_to_use.render(self.texts.get("enter_name", "Please enter your name:"), True, self.graphic.BLUE)
+        prompt_text = self.graphic.font.render("Please enter your name:", True, self.graphic.BLUE)
         message = ""
 
         while not done:
@@ -187,7 +177,7 @@ class Menu:
             self.graphic.draw_menu_background()
 
             self.screen.blit(prompt_text, (self.graphic.WIDTH // 2 - prompt_text.get_width() // 2, self.graphic.HEIGHT // 2 - 80))
-            txt_surface = font_to_use.render(text, True, color)
+            txt_surface = self.graphic.font.render(text, True, color)
             width = max(200, txt_surface.get_width() + 10)
             self.input_box.w = width
             self.input_box.x = self.WIDTH // 2 - self.input_box.w // 2
@@ -195,7 +185,7 @@ class Menu:
             pygame.draw.rect(self.screen, color, self.input_box, 2)
 
             if message:
-                message_surface = small_font_to_use.render(message, True, self.graphic.BLUE)
+                message_surface = self.graphic.small_font.render(message, True, self.graphic.BLUE)
                 self.screen.blit(message_surface, (self.WIDTH // 2 - message_surface.get_width() // 2, self.HEIGHT // 2 + 50))
 
             pygame.display.flip()

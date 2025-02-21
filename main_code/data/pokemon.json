@@ -1,7 +1,24 @@
-
 {
-    "en": {
+    "english": {
         "title": "Pokemon Buttle",
+        "menu": {
+        "start_game": "Start game",
+        "add_pokemon": "Add pokemon",
+        "pokedex": "Pokedex",
+        "rules_settings": "Rules and Settings",
+        "exit": "Exit",
+        "rules": "Rules",
+        "language": "Language",
+        "help": "Help",
+        "fr": "French",
+        "en": "English",
+        "uk": "Ukrainian",
+        "go_back": "Go back",
+        "create_pokemon": "Create Pokemon",
+        "import_pokemon": "Import Pokemon",
+        "view_pokemon": "View All Pokemon",
+        "search_pokemon": "Search Pokemon"
+    },
         "pokemon":{
             "available": { 
                 "bulbasaur": {
@@ -264,14 +281,29 @@
                 "defense": 55
                 }
             }
-        }
-
-        
-        
+        }        
     },
 
-    "fr": {
+    "french": {
         "title": "Bataille de Pokémon",
+        "menu":{
+        "start_game": "Commencer le jeu",
+        "add_pokemon": "Ajouter pokemon",
+        "pokedex": "Pokedex",
+        "rules_settings": "Règles et paramètres",
+        "exit": "Quitter",
+        "rules": "Rules",
+        "language": "Language",
+        "help": "Help",
+        "fr": "French",
+        "en": "English",
+        "uk": "Ukrainian",
+        "go_back": "Retour",
+        "create_pokemon": "Créer un Pokemon",
+        "import_pokemon": "Importer un Pokemon",
+        "view_pokemon": "Voir tous les Pokemon",
+        "search_pokemon": "Rechercher un Pokemon"
+    },
         "pokemon":{
             "available": { 
                 "bulbasaur": {
@@ -537,8 +569,26 @@
         }
     },
 
-    "uk": {
+    "ukrainian": {
         "title": "Битва покемонів",
+        "menu": {
+        "start_game": "Почати гру",
+        "add_pokemon": "Додати покемона",
+        "pokedex": "Покедекс",
+        "rules_settings": "Правила та налаштування",
+        "exit": "Вихід",
+        "rules": "Правила",
+        "language": "Мова",
+        "help": "Допомога",
+        "fr": "Французька",
+        "en": "Англійська",
+        "uk": "Українська",
+        "go_back": "Назад",
+        "create_pokemon": "Створити покемона",
+        "import_pokemon": "Імпортувати покемона",
+        "view_pokemon": "Переглянути всіх покемонів",
+        "search_pokemon": "Пошук покемона"
+    },
         "pokemon": {
             "available": { 
                 "bulbasaur": {

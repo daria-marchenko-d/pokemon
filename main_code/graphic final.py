@@ -37,20 +37,15 @@ class Graphic:
         self.music = pygame.mixer.music.load("main_code/sounds/menu.mp3")
         pygame.mixer.music.play(-1)
 
-        # Стандартні шрифти
-        self.default_font = pygame.font.SysFont("Harrington", 50)
-        self.default_small_font = pygame.font.SysFont("Harrington", 30)
-        
-        # Українські шрифти
-        self.ua_font = pygame.font.SysFont("Segoe UI", 50)
-        self.ua_small_font = pygame.font.SysFont("Segoe UI", 30)
+        # Fonts
+        self.font = pygame.font.SysFont("Harrington", 50)
+        self.small_font = pygame.font.SysFont("Harrington", 30)
 
         self.running = True
 
         # Load languages
         self.languages = self.load_languages("main_code/data/pokemon.json")
         self.current_language = "english"
-        self.texts = {}  # Додаємо атрибут для текстів
 
         self.pokemon_sprites = self.load_pokemon_sprites("main_code/pictures/pokemon_sprites")
 
@@ -96,11 +91,6 @@ class Graphic:
         current_lang_texts = self.languages.get(self.current_language, self.languages["english"])
         return current_lang_texts.get(key, key)
     
-    def set_texts(self, texts):
-        """Встановлює тексти для поточної мови"""
-        self.texts = texts
-        print(f"Тексти оновлено для мови {self.current_language}")
-
     def draw_menu_background(self):
 
         if self.background:
@@ -121,39 +111,29 @@ class Graphic:
         else:
             print(f"Sprite for {pokemon_name} is not found!")
     
-    def draw_button(self, y, key, default_color, hover_color):
-        # Вибір шрифту залежно від мови
-        font = self.ua_font if self.current_language == "ukrainian" else self.default_font
-        
-        try:
-            # Отримуємо переклад з JSON
-            if isinstance(key, str):  # Якщо key це ключ для перекладу
-                text = self.texts.get(key, key)  # Беремо переклад або використовуємо ключ як текст
-            else:
-                text = str(key)  # Якщо key це вже текст
-                
-            text_surface = font.render(text, True, self.BLACK)
-            text_rect = text_surface.get_rect(center=(self.WIDTH // 2, y + 25))
-            width = text_rect.width + 40
-            height = 50
-            x = (self.WIDTH - width) // 2
-            button_rect = pygame.Rect(x, y, width, height)
+    def draw_button(self, y,key, default_color, hover_color):
+        # Draw a button on the screen
+        button_text = self.get_text(key)
+        text_surface = self.font.render(button_text, True, self.BLACK)
+        text_rect = text_surface.get_rect(center=(self.WIDTH // 2, y + 25))
+        width = text_rect.width + 40
+        height = 50
+        x = (self.WIDTH - width) // 2
+        button_rect = pygame.Rect(x, y, width, height)
 
-            mouse = pygame.mouse.get_pos()
-            is_hovered = button_rect.collidepoint(mouse)
+        mouse = pygame.mouse.get_pos()
+        is_hovered = button_rect.collidepoint(mouse)
 
-            if is_hovered:
-                pygame.draw.rect(self.screen, hover_color, button_rect)
-                if pygame.mouse.get_pressed()[0]:
-                    pygame.time.wait(150)  # Невелика затримка для уникнення випадкових натискань
-                    pygame.event.clear()   # Очищаємо події після кліка
-                    return True
-            else:
-                pygame.draw.rect(self.screen, default_color, button_rect)
+        if is_hovered:
+            pygame.draw.rect(self.screen, hover_color, button_rect)
+            if pygame.mouse.get_pressed()[0]:
+                pygame.time.wait(150)  # Невелика затримка для уникнення випадкових натискань
+                pygame.event.clear()   # Очищаємо події після кліка
+                return True
+        else:
+            pygame.draw.rect(self.screen, default_color, button_rect)
 
-            self.screen.blit(text_surface, text_rect)
-        except Exception as e:
-            print(f"Error drawing button: {e}")
+        self.screen.blit(text_surface, text_rect)
         return False
 
 # Ініціалізація Pygame
