@@ -1,7 +1,7 @@
 class Pokemon:
     def __init__(self, nom, type_list, pv, attaque, defense, niveau=1, evolution=None):
         self.nom = nom
-        self.type = type_list  # Liste de types
+        self.type = type_list  
         self.pv = pv
         self.attaque = attaque
         self.defense = defense

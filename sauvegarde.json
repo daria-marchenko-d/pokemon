@@ -1,0 +1,23 @@
+{
+    "equipe_joueur": [
+        {
+            "nom": "Mew",
+            "type": [
+                "Psychic"
+            ],
+            "pv": 100,
+            "attaque": 100,
+            "defense": 100,
+            "attaques": [
+                "Pound",
+                "Mega-punch",
+                "Pay-day",
+                "Fire-punch"
+            ],
+            "sprites": {
+                "face": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+                "dos": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/151.png"
+            }
+        }
+    ]
+}

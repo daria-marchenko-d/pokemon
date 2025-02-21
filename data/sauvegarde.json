@@ -1,18 +1,24 @@
 {
-    "joueur": {
-        "nom": "Carapuce",
-        "type": [
-            "Normal"
-        ],
-        "pv": 50,
-        "attaque": 10,
-        "defense": 5,
-        "attaques": [
-            "Charge"
-        ],
-        "sprites": {
-            "face": null,
-            "dos": null
+    "equipe_joueur": [
+        {
+            "nom": "Bulbasaur",
+            "type": [
+                "Grass",
+                "Poison"
+            ],
+            "pv": -33,
+            "attaque": 49,
+            "defense": 49,
+            "attaques": [
+                "Razor-wind",
+                "Swords-dance",
+                "Cut",
+                "Bind"
+            ],
+            "sprites": {
+                "face": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+                "dos": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png"
+            }
         }
-    }
+    ]
 }

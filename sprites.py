@@ -51,13 +51,13 @@ def download_and_save_image(url, path):
     return False
 
 def main():
-    # Initialisation de pygame (optionnelle ici, utile pour tester ou redimensionner si besoin)
+  
     pygame.init()
     
-    # Créer le dossier "sprites" s'il n'existe pas
+  
     os.makedirs("sprites", exist_ok=True)
     
-    # Récupérer la liste des 151 premiers Pokémon
+
     pokemon_names = get_first_151_pokemon()
     print(f"Récupération des sprites pour {len(pokemon_names)} Pokémon...")
     
@@ -65,7 +65,7 @@ def main():
         sprites = get_pokemon_sprites(name)
         print(f"{name}: front={sprites['front']}, back={sprites['back']}")
         
-        # Sauvegarder le sprite de face
+   
         if sprites["front"]:
             front_path = os.path.join("sprites", f"{name.lower()}_front.png")
             if download_and_save_image(sprites["front"], front_path):
@@ -73,7 +73,7 @@ def main():
             else:
                 print(f"Erreur lors de l'enregistrement du sprite de face pour {name}")
         
-        # Sauvegarder le sprite de dos
+    
         if sprites["back"]:
             back_path = os.path.join("sprites", f"{name.lower()}_back.png")
             if download_and_save_image(sprites["back"], back_path):

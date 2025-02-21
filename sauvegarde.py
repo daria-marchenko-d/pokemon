@@ -1,16 +1,35 @@
 import json
+import pygame
+import random
+from utils import charger_json
+from selection_pokemon import SelectionPokemon
+from combat import Combat
 
-SAVE_FILE = "data/save.json"
+def load_game(graphic):
+    from menu import menu_principal
+    """
+    Interface pour charger une sauvegarde existante avec le fond du menu.
+    """
+    running = True
+    while running:
+        graphic.draw_menu_background() 
 
-def save_game(data):
-    with open(SAVE_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
+       
+        graphic.draw_text("Charger une Partie", graphic.WIDTH // 2 - 150, 100, size=48, color=graphic.WHITE)
 
-def load_game(screen):
-    try:
-        with open(SAVE_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-            # Ici, vous pouvez ajouter une interface graphique pour afficher la sauvegarde
-            print("Partie chargée :", data)
-    except FileNotFoundError:
-        print("Aucune sauvegarde trouvée.")
+       
+        bouton_confirmer = graphic.draw_button(300, "Continuer", graphic.GRAY, graphic.HIGHLIGHT)
+        bouton_retour = graphic.draw_button(380, "Retour", graphic.GRAY, graphic.HIGHLIGHT)
+
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = event.pos
+                if bouton_confirmer.collidepoint(x, y):
+                    SelectionPokemon(graphic.screen).run()
+                elif bouton_retour.collidepoint(x, y):
+                    menu_principal()
+                    return
